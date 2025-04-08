@@ -5,6 +5,13 @@ group3 = _G.Name3
 group4 = _G.Name4
 group5 = _G.Name5
 
+-- กลุ่มของผู้ใช้ที่ได้รับอนุญาต
+group1 = _G.Name1
+group2 = _G.Name2
+group3 = _G.Name3
+group4 = _G.Name4
+group5 = _G.Name5
+
 -- ชื่อกลุ่มสำหรับแสดงใน UI
 local groupNames = {
     "1", -- ชื่อสำหรับกลุ่ม 1
@@ -54,12 +61,12 @@ local function createGroupUI(groupName, groupNum)
     -- เส้นขอบชั้นนอก (แสงฟุ้ง)
     local uiStrokeOuter = Instance.new("UIStroke")
     uiStrokeOuter.Thickness = 10 -- ขอบหนากว่าสำหรับเอฟเฟกต์ฟุ้ง
-    uiStrokeOuter.Transparency = 1 -- โปร่งแสงเพื่อดูฟุ้ง
+    uiStrokeOuter.Transparency = 0.1 -- โปร่งแสงเพื่อดูฟุ้ง
     uiStrokeOuter.Parent = mainFrame
     
     -- เส้นขอบชั้นใน (สีรุ้งหลัก)
     local uiStrokeInner = Instance.new("UIStroke")
-    uiStrokeInner.Thickness = 2 -- ขอบปกติ
+    uiStrokeInner.Thickness = 10 -- ขอบปกติ
     uiStrokeInner.Transparency = 6 -- ทึบแสง
     uiStrokeInner.Parent = mainFrame
     
