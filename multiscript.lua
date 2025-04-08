@@ -40,7 +40,7 @@ local function createGroupUI(groupName, groupNum)
     local mainFrame = Instance.new("Frame")
     mainFrame.Name = "MainFrame"
     mainFrame.Size = UDim2.new(0, 150, 0, 70)
-    mainFrame.Position = UDim2.new(0.5, -30, 0, 10) -- ขยับขวานิดหน่อยและขึ้นไปด้านบน
+    mainFrame.Position = UDim2.new(0.5, -50, 0, 10) -- ขยับขวานิดหน่อยและขึ้นไปด้านบน
     mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
     mainFrame.BackgroundTransparency = 0.2
     mainFrame.BorderSizePixel = 0
@@ -51,15 +51,17 @@ local function createGroupUI(groupName, groupNum)
     uiCorner.CornerRadius = UDim.new(0, 8)
     uiCorner.Parent = mainFrame
     
-    -- เส้นขอบเฟรม
-    local uiStroke = Instance.new("UIStroke")
-    uiStroke.Color = groupNum == 1 and Color3.fromRGB(255, 215, 0) or 
-                     groupNum == 2 and Color3.fromRGB(0, 191, 255) or 
-                     groupNum == 3 and Color3.fromRGB(255, 26, 0) or 
-                     groupNum == 4 and Color3.fromRGB(0, 191, 255) or 
-                     Color3.fromRGB(0, 255, 153) -- สีทองสำหรับกลุ่ม 1, สีฟ้าสำหรับกลุ่ม 2, สีแดงสำหรับกลุ่ม 3, สีฟ้าสำหรับกลุ่ม 4, สีเขียวอมฟ้าสำหรับกลุ่ม 5
-    uiStroke.Thickness = 2
-    uiStroke.Parent = mainFrame
+    -- เส้นขอบชั้นนอก (แสงฟุ้ง)
+    local uiStrokeOuter = Instance.new("UIStroke")
+    uiStrokeOuter.Thickness = 6 -- ขอบหนากว่าสำหรับเอฟเฟกต์ฟุ้ง
+    uiStrokeOuter.Transparency = 0.1 -- โปร่งแสงเพื่อดูฟุ้ง
+    uiStrokeOuter.Parent = mainFrame
+    
+    -- เส้นขอบชั้นใน (สีรุ้งหลัก)
+    local uiStrokeInner = Instance.new("UIStroke")
+    uiStrokeInner.Thickness = 2 -- ขอบปกติ
+    uiStrokeInner.Transparency = 6 -- ทึบแสง
+    uiStrokeInner.Parent = mainFrame
     
     -- สร้างป้ายกลุ่ม
     local groupLabel = Instance.new("TextLabel")
@@ -89,26 +91,24 @@ local function createGroupUI(groupName, groupNum)
     nameLabel.TextSize = 18
     nameLabel.Parent = mainFrame
     
-    -- เพิ่มเอฟเฟกต์การเคลื่อนไหว
+    -- เพิ่มเอฟเฟกต์การเคลื่อนไหวและสีรุ้ง
     local function animateUI()
+        -- แอนิเมชันเคลื่อนเข้ามา
         for i = 1, 10 do
-            mainFrame.Position = UDim2.new(0.5, -30 - i*5, 0, 10) -- ปรับให้เคลื่อนจากตำแหน่งใหม่
+            mainFrame.Position = UDim2.new(0.5, -50 - i*5, 0, 10)
             task.wait(0.01)
         end
         
         task.wait(0.5)
         
-        -- เอฟเฟกต์ต่อเนื่อง เพื่อให้ UI สามารถสังเกตเห็นได้ง่าย
+        -- ลูปสีรุ้ง
+        local hue = 0
         while true do
-            for i = 1, 10 do
-                uiStroke.Transparency = i / 20
-                task.wait(0.05)
-            end
-            
-            for i = 10, 1, -1 do
-                uiStroke.Transparency = i / 20
-                task.wait(0.05)
-            end
+            hue = (hue + 0.02) % 1 -- ปรับความเร็วสีรุ้ง
+            local color = Color3.fromHSV(hue, 1, 1) -- สร้างสีรุ้งด้วย HSV
+            uiStrokeInner.Color = color -- ขอบชั้นใน
+            uiStrokeOuter.Color = color -- ขอบชั้นนอก (ฟุ้ง)
+            task.wait(0.05) -- ความเร็วการเปลี่ยนสี
         end
     end
     
@@ -140,7 +140,7 @@ elseif isInGroup(playerName, group2) then
 elseif isInGroup(playerName, group3) then
     -- เก็บข้อมูลกลุ่ม
     playerGroup = groupNames[3]
-    groupNumber =3
+    groupNumber = 3
     
     -- รันสคริปต์สำหรับกลุ่ม 3
     print("คุณอยู่ในกลุ่มที่ 3: " .. playerGroup .. " กำลังโหลดสคริปต์...")
