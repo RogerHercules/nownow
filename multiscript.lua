@@ -40,7 +40,7 @@ local function createGroupUI(groupName, groupNum)
     local mainFrame = Instance.new("Frame")
     mainFrame.Name = "MainFrame"
     mainFrame.Size = UDim2.new(0, 150, 0, 70)
-    mainFrame.Position = UDim2.new(0.5, -50, 0, 10) -- ขยับขวานิดหน่อยและขึ้นไปด้านบน
+    mainFrame.Position = UDim2.new(0.5, -30, 0, 10) -- ขยับขวานิดหน่อยและขึ้นไปด้านบน
     mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
     mainFrame.BackgroundTransparency = 0.2
     mainFrame.BorderSizePixel = 0
@@ -92,7 +92,7 @@ local function createGroupUI(groupName, groupNum)
     -- เพิ่มเอฟเฟกต์การเคลื่อนไหว
     local function animateUI()
         for i = 1, 10 do
-            mainFrame.Position = UDim2.new(0.5, -50 - i*5, 0, 10) -- ปรับให้เคลื่อนจากตำแหน่งใหม่
+            mainFrame.Position = UDim2.new(0.5, -30 - i*5, 0, 10) -- ปรับให้เคลื่อนจากตำแหน่งใหม่
             task.wait(0.01)
         end
         
