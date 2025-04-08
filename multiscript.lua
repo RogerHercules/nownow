@@ -40,7 +40,7 @@ local function createGroupUI(groupName, groupNum)
     local mainFrame = Instance.new("Frame")
     mainFrame.Name = "MainFrame"
     mainFrame.Size = UDim2.new(0, 150, 0, 70)
-    mainFrame.Position = UDim2.new(0.5, -50, 0, 10) -- ขยับขวานิดหน่อยและขึ้นไปด้านบน
+    mainFrame.Position = UDim2.new(0.5, -30, 0, 10) -- ขยับขวานิดหน่อยและขึ้นไปด้านบน
     mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
     mainFrame.BackgroundTransparency = 0.2
     mainFrame.BorderSizePixel = 0
@@ -53,8 +53,8 @@ local function createGroupUI(groupName, groupNum)
     
     -- เส้นขอบชั้นนอก (แสงฟุ้ง)
     local uiStrokeOuter = Instance.new("UIStroke")
-    uiStrokeOuter.Thickness = 6 -- ขอบหนากว่าสำหรับเอฟเฟกต์ฟุ้ง
-    uiStrokeOuter.Transparency = 0.1 -- โปร่งแสงเพื่อดูฟุ้ง
+    uiStrokeOuter.Thickness = 10 -- ขอบหนากว่าสำหรับเอฟเฟกต์ฟุ้ง
+    uiStrokeOuter.Transparency = 1 -- โปร่งแสงเพื่อดูฟุ้ง
     uiStrokeOuter.Parent = mainFrame
     
     -- เส้นขอบชั้นใน (สีรุ้งหลัก)
@@ -95,7 +95,7 @@ local function createGroupUI(groupName, groupNum)
     local function animateUI()
         -- แอนิเมชันเคลื่อนเข้ามา
         for i = 1, 10 do
-            mainFrame.Position = UDim2.new(0.5, -50 - i*5, 0, 10)
+            mainFrame.Position = UDim2.new(0.5, -30 - i*5, 0, 10)
             task.wait(0.01)
         end
         
