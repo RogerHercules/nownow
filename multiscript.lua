@@ -41,7 +41,7 @@ local function createGroupUI(groupName, groupNum)
     local mainFrame = Instance.new("Frame")
     mainFrame.Name = "MainFrame"
     mainFrame.Size = UDim2.new(0, 150, 0, 70)
-    mainFrame.Position = UDim2.new(1, -160, 0.5, -35) -- ตำแหน่งฝั่งขวาของจอ
+    mainFrame.Position = UDim2.new(0.5, -75, 0, 10) -- ตำแหน่งฝั่งขวาของจอ
     mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
     mainFrame.BackgroundTransparency = 0.2
     mainFrame.BorderSizePixel = 0
