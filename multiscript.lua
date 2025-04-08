@@ -5,12 +5,15 @@ group3 = _G.Name3
 group4 = _G.Name4
 group5 = _G.Name5
 group6 = _G.Name6
-group7 = _G.Name7
 
 -- ชื่อกลุ่มสำหรับแสดงใน UI
 local groupNames = {
-    "VIP Members", -- ชื่อสำหรับกลุ่ม 1
-    "Premium Members" -- ชื่อสำหรับกลุ่ม 2
+    "1", -- ชื่อสำหรับกลุ่ม 1
+    "2", -- ชื่อสำหรับกลุ่ม 2
+    "3", -- ชื่อสำหรับกลุ่ม 3
+    "4", -- ชื่อสำหรับกลุ่ม 4
+    "5", -- ชื่อสำหรับกลุ่ม 5
+    "6" -- ชื่อสำหรับกลุ่ม 6
 }
 
 -- รับชื่อผู้เล่นปัจจุบัน
@@ -165,15 +168,6 @@ elseif isInGroup(playerName, group6) then
     print("คุณอยู่ในกลุ่มที่ 6: " .. playerGroup .. " กำลังโหลดสคริปต์...")
     loadstring(game:HttpGet(_G.scriptlua1[6]))()
 
-elseif isInGroup(playerName, group7) then
-    -- เก็บข้อมูลกลุ่ม
-    playerGroup = groupNames[7]
-    groupNumber = 7
-    
-    -- รันสคริปต์สำหรับกลุ่ม 7
-    print("คุณอยู่ในกลุ่มที่ 7: " .. playerGroup .. " กำลังโหลดสคริปต์...")
-    loadstring(game:HttpGet(_G.scriptlua1[7]))()
-    
 else
     -- ถ้าไม่ได้อยู่ในกลุ่มไหนเลย
     print("ชื่อผู้ใช้ไม่ได้รับอนุญาต: " .. playerName)
