@@ -60,7 +60,7 @@ local function createGroupUI(groupName, groupNum)
     
     -- เส้นขอบชั้นนอก (แสงฟุ้ง)
     local uiStrokeOuter = Instance.new("UIStroke")
-    uiStrokeOuter.Thickness = 10 -- ขอบหนากว่าสำหรับเอฟเฟกต์ฟุ้ง
+    uiStrokeOuter.Thickness = 7 -- ขอบหนากว่าสำหรับเอฟเฟกต์ฟุ้ง
     uiStrokeOuter.Transparency = 0.1 -- โปร่งแสงเพื่อดูฟุ้ง
     uiStrokeOuter.Parent = mainFrame
     
