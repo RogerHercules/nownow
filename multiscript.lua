@@ -7,11 +7,11 @@ group5 = _G.Name5
 
 -- ชื่อกลุ่มสำหรับแสดงใน UI
 local groupNames = {
-    "1", -- ชื่อสำหรับกลุ่ม 1
-    "2", -- ชื่อสำหรับกลุ่ม 2
-    "3", -- ชื่อสำหรับกลุ่ม 3
-    "4", -- ชื่อสำหรับกลุ่ม 4
-    "5" -- ชื่อสำหรับกลุ่ม 5
+    "1 หำแป้ด", -- ชื่อสำหรับกลุ่ม 1
+    "2 หำแป้ด", -- ชื่อสำหรับกลุ่ม 2
+    "3 หำแป้ด", -- ชื่อสำหรับกลุ่ม 3
+    "4 หำแป้ด", -- ชื่อสำหรับกลุ่ม 4
+    "5 หำแป้ด" -- ชื่อสำหรับกลุ่ม 5
 }
 
 -- รับชื่อผู้เล่นปัจจุบัน
@@ -29,7 +29,6 @@ local function isInGroup(username, group)
     return false
 end
 
--- ฟังก์ชั่นสร้าง UI แสดงกลุ่มที่ด้านขวาของจอ
 local function createGroupUI(groupName, groupNum)
     -- สร้าง UI
     local screenGui = Instance.new("ScreenGui")
@@ -41,7 +40,7 @@ local function createGroupUI(groupName, groupNum)
     local mainFrame = Instance.new("Frame")
     mainFrame.Name = "MainFrame"
     mainFrame.Size = UDim2.new(0, 150, 0, 70)
-    mainFrame.Position = UDim2.new(0.5, -75, 0, 10) -- ตำแหน่งฝั่งขวาของจอ
+    mainFrame.Position = UDim2.new(0.5, -50, 0, 10) -- ขยับขวานิดหน่อยและขึ้นไปด้านบน
     mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
     mainFrame.BackgroundTransparency = 0.2
     mainFrame.BorderSizePixel = 0
@@ -54,7 +53,11 @@ local function createGroupUI(groupName, groupNum)
     
     -- เส้นขอบเฟรม
     local uiStroke = Instance.new("UIStroke")
-    uiStroke.Color = groupNum == 1 and Color3.fromRGB(255, 215, 0) or Color3.fromRGB(0, 191, 255) -- สีทองสำหรับกลุ่ม 1, สีฟ้าสำหรับกลุ่ม 2
+    uiStroke.Color = groupNum == 1 and Color3.fromRGB(255, 215, 0) or 
+                     groupNum == 2 and Color3.fromRGB(0, 191, 255) or 
+                     groupNum == 3 and Color3.fromRGB(255, 26, 0) or 
+                     groupNum == 4 and Color3.fromRGB(0, 191, 255) or 
+                     Color3.fromRGB(0, 255, 153) -- สีทองสำหรับกลุ่ม 1, สีฟ้าสำหรับกลุ่ม 2, สีแดงสำหรับกลุ่ม 3, สีฟ้าสำหรับกลุ่ม 4, สีเขียวอมฟ้าสำหรับกลุ่ม 5
     uiStroke.Thickness = 2
     uiStroke.Parent = mainFrame
     
@@ -77,7 +80,11 @@ local function createGroupUI(groupName, groupNum)
     nameLabel.Position = UDim2.new(0, 0, 0, 25)
     nameLabel.BackgroundTransparency = 1
     nameLabel.Text = groupName
-    nameLabel.TextColor3 = groupNum == 1 and Color3.fromRGB(255, 215, 0) or Color3.fromRGB(0, 191, 255) -- สีทองสำหรับกลุ่ม 1, สีฟ้าสำหรับกลุ่ม 2
+    nameLabel.TextColor3 = groupNum == 1 and Color3.fromRGB(255, 215, 0) or 
+                          groupNum == 2 and Color3.fromRGB(0, 191, 255) or 
+                          groupNum == 3 and Color3.fromRGB(255, 26, 0) or 
+                          groupNum == 4 and Color3.fromRGB(0, 191, 255) or 
+                          Color3.fromRGB(0, 255, 153)
     nameLabel.Font = Enum.Font.GothamBold
     nameLabel.TextSize = 18
     nameLabel.Parent = mainFrame
@@ -85,7 +92,7 @@ local function createGroupUI(groupName, groupNum)
     -- เพิ่มเอฟเฟกต์การเคลื่อนไหว
     local function animateUI()
         for i = 1, 10 do
-            mainFrame.Position = UDim2.new(1, -160 - i*5, 0.5, -35)
+            mainFrame.Position = UDim2.new(0.5, -50 - i*5, 0, 10) -- ปรับให้เคลื่อนจากตำแหน่งใหม่
             task.wait(0.01)
         end
         
